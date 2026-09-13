@@ -1,11 +1,13 @@
 # Federated Consulting Knowledge Fabric
 
-## Single-file project brief for Codex
+## Living reference architecture and presentation
 
 **Version:** 0.2  
 **Date:** 13 September 2026  
 **Status:** Concept and proof-of-concept specification; not approved for production data  
 **Scenario:** A strategy consultancy with 20 isolated client engagements using Microsoft SharePoint, Entra ID, Purview Information Barriers, and NVIDIA FLARE
+
+> **Independent exploratory project.** This repository does not describe an official NVIDIA product, commitment, reference architecture, legal opinion, or customer implementation. It contains no approved path for publishing confidential, client, employer, or third-party material.
 
 ---
 
@@ -19,9 +21,15 @@ Read this file completely before taking action. Treat it as the authoritative pr
 
 ### Mission
 
-Build a locally reproducible and auditable proof of concept with three simulated client engagements. The POC must test whether isolated environments can learn a shared, abstract capability from locally stored documents without sending raw documents, private adapters, or client-identifiable knowledge across engagement boundaries.
+Maintain a public, GitHub-native reference architecture that explains the tools, controls, decisions, and workflows required for a separately authorised proof of concept. The blueprint tests whether isolated environments could learn a shared, abstract capability from locally stored documents without sending raw documents, private adapters, or client-identifiable knowledge across engagement boundaries.
 
-This is not yet a production deployment. Work in phases:
+### Repository scope
+
+This repository is the single source of truth and presentation layer for the concept. It contains documentation, Mermaid diagrams, decision records, source links, and small synthetic pseudocode or configuration fragments only.
+
+It must never host or execute client projects, source repositories, datasets, prompts or outputs from engagements, model weights, adapters, checkpoints, credentials, production configurations, deployments, or training runs. Any POC or customer implementation must live in a separate, explicitly approved private repository and isolated environment. Only reviewed, sanitised, non-client-specific findings may be summarised here.
+
+The following phases describe work for a separate implementation repository; they are not authorisation to execute a POC here:
 
 1. Inspect the repository, Git status, operating system, Python version, GPU/CUDA availability, container support, and available resources.
 2. Validate the current official NVFLARE, PEFT, and Microsoft documentation relevant to the chosen implementation.
@@ -42,8 +50,11 @@ This is not yet a production deployment. Work in phases:
 - Record material architecture decisions as ADRs or an equivalent durable decision log.
 - Explicitly document residual risks where a requirement cannot be guaranteed.
 - Use official primary technical sources for implementation decisions and record exact dependency versions.
+- Follow [PUBLICATION_POLICY.md](PUBLICATION_POLICY.md) before adding any source, dataset, model, generated artefact, benchmark result, or visual. Public availability does not equal an open-source licence.
+- Use [OPEN_SOURCE_BASELINE.md](OPEN_SOURCE_BASELINE.md) as the tool admission register; verify the exact version before recommending it.
+- Every pull request must pass the automated publication gate and a human provenance review before merge.
 
-### Expected result of the first implementation stage
+### Expected result of a separately authorised first implementation stage
 
 - A reproducible local development environment.
 - Three logically and technically separated engagement simulators.
@@ -418,15 +429,15 @@ Use the broader [NVIDIA NeMo Framework](https://docs.nvidia.com/nemo-framework/)
 
 This is not the POC default. Escalate only when a measured limitation justifies the additional infrastructure and governance burden.
 
-### G. NeMo Microservices — possible productisation layer
+### G. NeMo Microservices — excluded from the open-source baseline
 
-NeMo Microservices may later provide API-based enterprise customisation and evaluation workflows. Do not make them the foundation of the first local POC. First validate the training contract, isolation model, policy enforcement, privacy controls, and evidence pipeline directly.
+NeMo Microservices are not part of this repository's strict open-source tool baseline. They may be described as an external product option, but must not be presented as an approved implementation dependency unless the exact component, version, licence, and deployment terms are separately verified and recorded.
 
-Adoption requires verification that the service can run within the permitted environment, preserves engagement isolation, exposes sufficient policy controls, and does not create a new central path for confidential training data.
+### H. TensorRT-LLM — open-source inference option
 
-### H. TensorRT-LLM or NIM — inference optimisation only
+[TensorRT-LLM](https://docs.nvidia.com/tensorrt-llm/) may later optimise inference latency and throughput. It does not solve training rights, data classification, federation, or leakage. Add it to a separate implementation only after model quality and privacy gates succeed and its exact release and licence have been verified.
 
-[TensorRT-LLM](https://docs.nvidia.com/tensorrt-llm/) or a suitable NVIDIA NIM may later optimise inference latency, throughput, and deployment. They do not solve training rights, data classification, federation, or leakage. Add them only after model quality and privacy gates succeed.
+NVIDIA NIM is excluded from the strict open-source baseline because its use is governed by NVIDIA product terms. It may be mentioned for comparison, but is not an approved default dependency for this concept.
 
 ### Decision matrix
 
@@ -438,8 +449,9 @@ Adoption requires verification that the service can run within the permitted env
 | NeMo Evaluator | reproducible evaluation | yes | yes |
 | NeMo RL | preference/RL post-training | no; prepare data model only | optional |
 | NeMo Framework/Megatron Core | large-scale or full-parameter training | no | if measured need exists |
-| NeMo Microservices | managed productisation layer | no | optional after governance review |
-| TensorRT-LLM/NIM | inference optimisation and serving | no | after model validation |
+| NeMo Microservices | external product option | excluded | only after separate licence decision |
+| TensorRT-LLM | open-source inference optimisation | no | after model and licence validation |
+| NVIDIA NIM | external product option | excluded | only after separate licence decision |
 
 ### Minimal technology contract
 
@@ -481,7 +493,6 @@ inference:
   poc: simple_local_runtime
   production_candidates:
     - TensorRT-LLM
-    - NVIDIA NIM
 ```
 
 ### Base-model decision
@@ -690,9 +701,9 @@ Failure to extract a canary does not prove the absence of all leakage. It is onl
 
 ---
 
-## 12. Suggested repository structure
+## 12. Suggested structure for a separate POC repository
 
-Codex may expand this single-file brief into a normal project structure:
+Do not create this implementation structure in the present repository. A separately authorised private POC repository may use:
 
 ```text
 .
@@ -730,11 +741,13 @@ Codex may expand this single-file brief into a normal project structure:
     └── evaluate.sh
 ```
 
-This structure is indicative. Codex may adapt it after examining current official NVFLARE examples, but must explain meaningful deviations.
+This structure is indicative for the separate POC. The public reference repository remains documentation-only.
 
 ---
 
-## 13. Implementation phases
+## 13. Workflow blueprint for a separate implementation
+
+These phases are a reviewable workflow description, not permission to execute customer or POC work in this repository.
 
 ### Phase 0 — Discovery and decisions
 
@@ -972,15 +985,15 @@ These links are starting points, not a complete technical or legal assessment. R
 
 ---
 
-## 20. First prompt to run
+## 20. First prompt to run in this repository
 
 Use this conservative prompt first:
 
-> Read `README.md` completely and treat it as the binding project brief. Always respond and document in English, even when I write in German. Begin with Phase 0 only. Inspect the repository and local environment, validate the current official NVFLARE and PEFT starting points, and produce a concrete POC implementation plan. Do not use real data, access Microsoft 365, create paid resources, or download a model that requires accepting a licence. Finish by listing the decisions you need from me before Phase 1.
+> Read `README.md`, `PUBLICATION_POLICY.md`, and `CONTRIBUTING.md` completely. Always respond and document in English. Update only the public reference architecture: verify primary-source links, tool licences, workflow descriptions, risks, and GitHub-renderable visuals. Do not add or run a POC, customer material, datasets, model artefacts, deployment configuration, or copied third-party content. Run the publication gate and report every material source and assumption.
 
-If implementation of the synthetic isolation layer is already authorised:
+To prepare a separate POC proposal without implementing it here:
 
-> Read `README.md` completely and treat it as the binding project brief. Always respond and document in English, even when I write in German. Complete Phase 0 and then implement Phase 1 using synthetic data only. Create three isolated engagement simulators and write negative cross-site access tests before adding model training. Stop before any external tenant access, paid deployment, credential use, or licence-gated model download. Document assumptions and run all tests.
+> Read all governance files. Draft a self-contained plan for a new, private POC repository using synthetic data only. Include approvals, licences, isolation tests, leakage tests, exit criteria, and repository boundaries. Do not create implementation files or execute training in this public reference repository.
 
 ---
 
