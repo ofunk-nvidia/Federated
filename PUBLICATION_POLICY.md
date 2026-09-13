@@ -67,19 +67,21 @@ Every pull request must satisfy all of these conditions:
 
 1. The contributor completed the pull-request publication checklist.
 2. The automated scanner found no known secret pattern or prohibited file type.
-3. A human reviewed provenance, licence compatibility, confidentiality, and personal data.
+3. The applicable publication review is recorded in the pull request: owner-authored changes receive a Codex review authorised by the repository owner, while external contributions receive repository-owner review.
 4. External content appears in `THIRD_PARTY_NOTICES.md`.
 5. Synthetic material is labelled synthetic and contains no real identifiers.
 6. Visuals include source and licence metadata or are original project assets.
 7. Generated content records its relevant inputs and review status.
-8. A reviewer confirms that the change does not imply official NVIDIA or customer endorsement.
-9. A reviewer confirms that the change remains documentation-only and contains no POC or customer-delivery artefact.
+8. The recorded review confirms that the change does not imply official NVIDIA or customer endorsement.
+9. The recorded review confirms that the change remains documentation-only and contains no POC or customer-delivery artefact.
 
-Automated scanning is a minimum control. Passing it does not prove that publication is safe.
+For an owner-authored change initiated in Codex, the repository owner's instruction authorises Codex to inspect the complete diff, verify the checklist and primary-source evidence, record the result in the pull request, wait for required checks, and merge through the authenticated `ofunk-nvidia` GitHub connector. A separate GitHub self-approval is neither possible nor required. External contributions still require explicit `ofunk-nvidia` CODEOWNER approval. A legal, security, privacy, or licence uncertainty remains a stop condition and requires an appropriately qualified human decision.
+
+Automated scanning and Codex review are minimum controls. Passing them does not by itself prove that publication is safe.
 
 ## External contributions
 
-Public visibility permits reading, forking, and proposing changes; it does not grant write or merge authority. External contributions enter only through pull requests from forks. The repository owner reviews every change as CODEOWNER, and the default-branch ruleset must prevent direct pushes, force pushes, deletion, and unreviewed merges. Do not add a collaborator merely to avoid this workflow.
+Public visibility permits reading, forking, and proposing changes; it does not grant write or merge authority. External contributions enter only through pull requests from forks and require repository-owner approval as CODEOWNER. Owner-authored changes follow the Codex-managed publication workflow above; the CODEOWNERS assignment identifies ownership but does not create an impossible self-approval requirement. The default-branch ruleset must require pull requests and publication checks and must prevent direct pushes, force pushes, and deletion. Do not add a collaborator merely to avoid this workflow.
 
 ## Incident response
 
@@ -95,3 +97,4 @@ If prohibited content enters Git history:
 ## Review cadence
 
 Review this policy whenever the repository adds a new data source, model, licence, external action, publication channel, or customer-facing use case.
+
