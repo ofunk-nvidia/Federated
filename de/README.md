@@ -75,4 +75,3 @@ flowchart TD
 ## Status
 
 Das Konzept ist für Executive- und technische Gespräche vorbereitet. Es enthält keine Aussage über rechtliche Sicherheit oder Produktionsreife. Der nächste mögliche Umsetzungsschritt ist ein synthetischer Drei-Site-POC in einem getrennten privaten Repository.
-
