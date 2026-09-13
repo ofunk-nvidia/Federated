@@ -28,11 +28,11 @@ flowchart TB
     FL --> AU
 ```
 
-Dies ist eine zentral betriebene Unternehmensumgebung: Die Strategieberatung besitzt den Microsoft-365-Tenant, den Entra-Tenant und die Azure-Plattform. Kunden stellen keine Identity Federation bereit und sind keine FLARE-Teilnehmer. Ihre Mandatsinhalte werden zentral gehalten, dürfen aber zwischen Mandatsteams nicht geteilt werden.
+Dies ist eine zentral betriebene Unternehmensumgebung: Die Strategieberatung besitzt den [Microsoft-365](https://learn.microsoft.com/en-us/microsoft-365/)-Tenant, den [Microsoft-Entra-ID](https://learn.microsoft.com/en-us/entra/fundamentals/what-is-entra)-Tenant und die [Microsoft-Azure](https://learn.microsoft.com/en-us/azure/)-Plattform. Kunden stellen keine Identity Federation bereit und sind keine [NVIDIA-FLARE](https://nvflare.readthedocs.io/en/main/)-Teilnehmer. Ihre Mandatsinhalte werden zentral gehalten, dürfen aber zwischen Mandatsteams nicht geteilt werden.
 
-Für den zentralen Dienst wird eine eigene Plattform-Subscription und für jede Mandatszelle ein dediziertes Spoke-VNet innerhalb der von der Beratung kontrollierten Azure-Landschaft verwendet. Alle Workload Identities gehören zum Entra-Tenant der Beratung, erhalten aber jeweils unabhängig nur Zugriff auf ihre ausgewählte SharePoint-Ressource. Im synthetischen POC kann ein AKS-Cluster drei stark getrennte Namespaces aufnehmen, weil Kundenmaterial ausgeschlossen ist. Für produktive Mandatsdaten ist ein dedizierter AKS-Cluster oder eine gehärtete GPU-VM beziehungsweise VM Scale Set je Mandats-Spoke das Referenzziel; Namespace-Isolation allein ist keine Informationsbarriere.
+Für den zentralen Dienst wird eine eigene Plattform-Subscription und für jede Mandatszelle ein dediziertes Spoke-VNet innerhalb der von der Beratung kontrollierten Azure-Landschaft verwendet. Alle Workload Identities gehören zum Entra-Tenant der Beratung, erhalten aber jeweils unabhängig nur Zugriff auf ihre ausgewählte SharePoint-Ressource. Im synthetischen POC kann ein Cluster des [Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/what-is-aks) drei stark getrennte Namespaces aufnehmen, weil Kundenmaterial ausgeschlossen ist. Für produktive Mandatsdaten ist ein dedizierter AKS-Cluster oder eine gehärtete GPU-VM beziehungsweise VM Scale Set je Mandats-Spoke das Referenzziel; Namespace-Isolation allein ist keine Informationsbarriere.
 
-Der zentrale FLARE-Endpunkt wird privat über einen internen Load Balancer und bei subscriptionsübergreifender Konnektivität gegebenenfalls über einen Azure Private Link Service bereitgestellt. Peering ist nur zulässig, wenn Routingtabellen und Netzwerksicherheitsregeln Spoke-zu-Spoke-Pfade verhindern. Das öffentliche Dokumentations-Repository deployt diese Infrastruktur niemals.
+Der zentrale FLARE-Endpunkt wird privat über einen internen Load Balancer und bei subscriptionsübergreifender Konnektivität gegebenenfalls über einen [Azure Private Link Service](https://learn.microsoft.com/en-us/azure/private-link/private-link-service-overview) bereitgestellt. Peering ist nur zulässig, wenn Routingtabellen und Netzwerksicherheitsregeln Spoke-zu-Spoke-Pfade verhindern. Das öffentliche Dokumentations-Repository deployt diese Infrastruktur niemals. Kurzerklärungen und offizielle Quellen stehen in der [Produkt- und Dienstreferenz](toolchain.md#produkt-und-dienstreferenz).
 
 ## Komponentenzuordnung
 
@@ -152,3 +152,4 @@ Je Runde werden aufbewahrt: Architekturversion, Data-Purpose-Freigabe, Ressource
 8. Vor einem echten Mandatspiloten ein Risk-Acceptance-Dossier erstellen.
 
 Die Abnahme verlangt null Cross-Site-Lesezugriffe, keine rohen oder abgeleiteten privaten Inhalte im Hub, keine direkten Site-Routen, reproduzierbare signierte Releases, erfolgreichen Widerruf und Recovery sowie dokumentiertes verbleibendes Privacy Leakage. Rechtliche und vertragliche Erlaubnis bleibt ein getrenntes Gate.
+
