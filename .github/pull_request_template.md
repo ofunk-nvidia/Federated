@@ -15,6 +15,8 @@
 - [ ] `python scripts/check_public_content.py` passes locally.
 - [ ] No dataset, model weight, adapter, checkpoint, embedding index, training run, or production configuration is included.
 - [ ] The change does not imply official endorsement by NVIDIA or a customer.
+- [ ] I am contributing through a pull request and do not require direct repository write access.
+- [ ] I did not add a privileged workflow trigger, secret reference, mutable action tag, or external active content.
 
 ## Evidence and reviewer
 

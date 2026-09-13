@@ -77,6 +77,10 @@ Every pull request must satisfy all of these conditions:
 
 Automated scanning is a minimum control. Passing it does not prove that publication is safe.
 
+## External contributions
+
+Public visibility permits reading, forking, and proposing changes; it does not grant write or merge authority. External contributions enter only through pull requests from forks. The repository owner reviews every change as CODEOWNER, and the default-branch ruleset must prevent direct pushes, force pushes, deletion, and unreviewed merges. Do not add a collaborator merely to avoid this workflow.
+
 ## Incident response
 
 If prohibited content enters Git history:

@@ -77,6 +77,10 @@ Jeder Pull Request muss alle Bedingungen erfüllen:
 
 Automatische Scans sind nur eine Mindestkontrolle. Ihr Bestehen beweist nicht, dass eine Veröffentlichung sicher oder rechtlich zulässig ist.
 
+## Externe Beiträge
+
+Öffentliche Sichtbarkeit erlaubt Lesen, Forken und das Vorschlagen von Änderungen; sie erteilt keine Schreib- oder Merge-Berechtigung. Externe Beiträge gelangen ausschließlich über Pull Requests aus Forks hinein. Der Repository-Inhaber prüft jede Änderung als CODEOWNER. Das Default-Branch-Ruleset muss direkte Pushes, Force Pushes, Löschung und nicht geprüfte Merges verhindern. Ein Contributor wird nicht als Collaborator hinzugefügt, nur um diesen Ablauf zu umgehen.
+
 ## Reaktion auf einen Vorfall
 
 Falls gesperrter Inhalt in die Git-Historie gelangt:
@@ -91,4 +95,3 @@ Falls gesperrter Inhalt in die Git-Historie gelangt:
 ## Überprüfung
 
 Diese Policy wird bei jeder neuen Datenquelle, jedem Modell, jeder Lizenz, externen Action, Veröffentlichungsform oder kundenbezogenen Nutzung überprüft.
-

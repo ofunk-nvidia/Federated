@@ -2,6 +2,8 @@
 
 Contributions are welcome when they satisfy [PUBLICATION_POLICY.md](PUBLICATION_POLICY.md).
 
+External contributors use a fork and submit a pull request. Do not request or grant direct write access merely to contribute documentation. Security-sensitive reports follow [SECURITY.md](SECURITY.md) and must never be placed in a public issue or pull request.
+
 Before opening a pull request:
 
 1. Add documentation, Mermaid, project-owned visuals, or small synthetic non-operational fragments only.
@@ -13,6 +15,7 @@ Before opening a pull request:
 7. Explain whether AI helped create the contribution and which inputs were used.
 8. Submit a small pull request with one clear purpose.
 9. If the presentation configuration or navigation changed, run `bash scripts/build_pages.sh` after installing `requirements-pages.txt` and review both language paths.
+10. Wait for the publication check and CODEOWNER approval; never ask a maintainer to bypass the default-branch ruleset.
 
 By contributing, you confirm that you have the right to submit the material under this repository’s licence. Passing automation does not replace human review.
 

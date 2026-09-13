@@ -57,6 +57,7 @@ nav:
           - Publication policy: PUBLICATION_POLICY.md
           - Open-source baseline: OPEN_SOURCE_BASELINE.md
           - Contributing: CONTRIBUTING.md
+          - Security: SECURITY.md
           - Third-party notices: THIRD_PARTY_NOTICES.md
   - Deutsch:
       - Überblick: de/README.md
@@ -69,4 +70,5 @@ nav:
           - Veröffentlichungs-Policy: de/PUBLICATION_POLICY.md
           - Open-Source-Baseline: de/OPEN_SOURCE_BASELINE.md
           - Mitwirken: de/CONTRIBUTING.md
+          - Sicherheit: de/SECURITY.md
           - Drittanbieterhinweise: de/THIRD_PARTY_NOTICES.md

@@ -1,0 +1,9 @@
+# The repository owner reviews every contribution.
+* @ofunk-nvidia
+
+# Security-sensitive control files remain explicitly owned even if later rules change.
+/.github/ @ofunk-nvidia
+/scripts/ @ofunk-nvidia
+/AGENTS.md @ofunk-nvidia
+/PUBLICATION_POLICY.md @ofunk-nvidia
+/SECURITY.md @ofunk-nvidia
