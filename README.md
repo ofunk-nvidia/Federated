@@ -11,50 +11,19 @@
 
 ---
 
-## 0. Binding instructions for Codex
+## Purpose
 
-Read this file completely before taking action. Treat it as the authoritative project brief.
+This public, GitHub-native reference architecture explains the tools, controls, decisions, and workflows required for a separately authorised proof of concept. The blueprint tests whether isolated environments could learn a shared, abstract capability from locally stored documents without sending raw documents, private adapters, or client-identifiable knowledge across engagement boundaries.
 
-### Language rule
-
-**All Codex output must be in English, even when the user writes or answers in German.** This includes plans, questions, explanations, source code, code comments, configuration, documentation, test reports, commit messages, issues, and pull requests. Preserve original-language quotations only when legally or technically necessary, and accompany them with an English explanation.
-
-### Mission
-
-Maintain a public, GitHub-native reference architecture that explains the tools, controls, decisions, and workflows required for a separately authorised proof of concept. The blueprint tests whether isolated environments could learn a shared, abstract capability from locally stored documents without sending raw documents, private adapters, or client-identifiable knowledge across engagement boundaries.
-
-### Repository scope
+## Repository scope
 
 This repository is the single source of truth and presentation layer for the concept. It contains documentation, Mermaid diagrams, decision records, source links, and small synthetic pseudocode or configuration fragments only.
 
-It must never host or execute client projects, source repositories, datasets, prompts or outputs from engagements, model weights, adapters, checkpoints, credentials, production configurations, deployments, or training runs. Any POC or customer implementation must live in a separate, explicitly approved private repository and isolated environment. Only reviewed, sanitised, non-client-specific findings may be summarised here.
+Client projects, source repositories, datasets, engagement prompts or outputs, model weights, adapters, checkpoints, credentials, production configurations, deployments, and training runs are outside its scope. A POC or customer implementation belongs in a separate, explicitly approved private repository and isolated environment. Only reviewed, sanitised, non-client-specific findings are suitable for this repository.
 
-The following phases describe work for a separate implementation repository; they are not authorisation to execute a POC here:
+Contributor and agent instructions are intentionally separated from this executive narrative. See [AGENTS.md](AGENTS.md), [PUBLICATION_POLICY.md](PUBLICATION_POLICY.md), and [CONTRIBUTING.md](CONTRIBUTING.md).
 
-1. Inspect the repository, Git status, operating system, Python version, GPU/CUDA availability, container support, and available resources.
-2. Validate the current official NVFLARE, PEFT, and Microsoft documentation relevant to the chosen implementation.
-3. Produce a concise implementation plan listing assumptions, decisions, dependencies, and risks.
-4. Build a fully synthetic local simulation before connecting to SharePoint or any external tenant.
-5. Implement automated tests for engagement isolation, data leakage, update isolation, policy enforcement, and reproducibility.
-6. Report results and limitations honestly. A capability is not considered implemented merely because a vendor documents it.
-7. Stop before accessing a real Microsoft 365 tenant, creating Entra applications, deploying cloud resources, downloading a model that requires accepting a licence, incurring cost, or using real client data. State the proposed next step and the approval required.
-
-### Non-negotiable working rules
-
-- Never use real client, employee, pricing, bid, M&A, capacity, or strategy data in the POC.
-- Never store passwords, tokens, certificates, keys, or secrets in Git, logs, notebooks, fixtures, or configuration files.
-- Never design a central application with tenant-wide `Sites.Read.All` access.
-- Never claim that federated learning removes copyright, competition, confidentiality, trade-secret, privacy, or contractual risk.
-- Preserve existing access controls end to end. An AI component must never read more than its assigned engagement identity can read.
-- Keep changes small, testable, reviewable, and reversible.
-- Record material architecture decisions as ADRs or an equivalent durable decision log.
-- Explicitly document residual risks where a requirement cannot be guaranteed.
-- Use official primary technical sources for implementation decisions and record exact dependency versions.
-- Follow [PUBLICATION_POLICY.md](PUBLICATION_POLICY.md) before adding any source, dataset, model, generated artefact, benchmark result, or visual. Public availability does not equal an open-source licence.
-- Use [OPEN_SOURCE_BASELINE.md](OPEN_SOURCE_BASELINE.md) as the tool admission register; verify the exact version before recommending it.
-- Every pull request must pass the automated publication gate and a human provenance review before merge.
-
-### Expected result of a separately authorised first implementation stage
+## What a separately authorised POC should demonstrate
 
 - A reproducible local development environment.
 - Three logically and technically separated engagement simulators.
@@ -836,7 +805,7 @@ This phase requires explicit approval and an isolated test tenant.
 
 ## 14. Open architecture decisions
 
-Codex must document options and consequences instead of silently deciding:
+The following decisions require explicit ownership and documented consequences:
 
 1. Which base model and licence fit the POC and later commercial use?
 2. What CPU, GPU, RAM, VRAM, storage, and network resources exist per site?
@@ -940,7 +909,7 @@ A real client pilot may be proposed only when:
 
 ## 18. Required documentation and reporting
 
-Codex must produce and maintain:
+A separately authorised implementation would require this evidence set:
 
 - installation and start instructions;
 - dependency, licence, and model inventory;
@@ -985,19 +954,7 @@ These links are starting points, not a complete technical or legal assessment. R
 
 ---
 
-## 20. First prompt to run in this repository
-
-Use this conservative prompt first:
-
-> Read `README.md`, `PUBLICATION_POLICY.md`, and `CONTRIBUTING.md` completely. Always respond and document in English. Update only the public reference architecture: verify primary-source links, tool licences, workflow descriptions, risks, and GitHub-renderable visuals. Do not add or run a POC, customer material, datasets, model artefacts, deployment configuration, or copied third-party content. Run the publication gate and report every material source and assumption.
-
-To prepare a separate POC proposal without implementing it here:
-
-> Read all governance files. Draft a self-contained plan for a new, private POC repository using synthetic data only. Include approvals, licences, isolation tests, leakage tests, exit criteria, and repository boundaries. Do not create implementation files or execute training in this public reference repository.
-
----
-
-## 21. Core decision
+## 20. Core decision
 
 This project does not attempt to prove that model weights are legally neutral. It investigates whether a technically and organisationally constrained platform can reuse only learning signals whose cross-engagement use is explicitly permitted.
 
