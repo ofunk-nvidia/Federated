@@ -40,7 +40,7 @@ flowchart LR
 
 > Ein Berater darf Wissen innerhalb eines freigegebenen Mandats nutzen. Die Beratung darf dieses Wissen nicht automatisch mandatsübergreifend wiederverwenden.
 
-Federated Learning ist damit ein Mechanismus für Koordination und technische Durchsetzung, keine juristische Abkürzung. NVIDIA FLARE wird als Orchestrierungsschicht bewertet; lokales Training, Evaluation, Privacy Engineering und Release Governance bleiben getrennte Verantwortlichkeiten.
+Federated Learning ist damit ein Mechanismus für Koordination und technische Durchsetzung, keine juristische Abkürzung. [NVIDIA FLARE](https://nvflare.readthedocs.io/en/main/) wird als Orchestrierungsschicht bewertet; lokales Training, Evaluation, Privacy Engineering und Release Governance bleiben getrennte Verantwortlichkeiten. Die [Produkt- und Dienstreferenz](../docs/de/toolchain.md#produkt-und-dienstreferenz) erklärt die genannten Plattform- und Werkzeugkomponenten und verweist auf ihre offizielle Dokumentation.
 
 ## Inhalt dieses Repositories
 
@@ -75,3 +75,4 @@ flowchart TD
 ## Status
 
 Das Konzept ist für Executive- und technische Gespräche vorbereitet. Es enthält keine Aussage über rechtliche Sicherheit oder Produktionsreife. Der nächste mögliche Umsetzungsschritt ist ein synthetischer Drei-Site-POC in einem getrennten privaten Repository.
+
