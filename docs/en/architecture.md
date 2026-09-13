@@ -103,4 +103,3 @@ The design assumes that a client, job, aggregator, administrator, or model can f
 ## Architecture decision still required
 
 The central question is not whether federation is technically possible. It is which learning object is sufficiently abstract, authorised, useful, and leakage-resistant to cross an engagement boundary.
-
