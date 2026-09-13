@@ -1,4 +1,6 @@
-# The repository owner reviews every contribution.
+# Ownership mapping. External contributions require this owner's approval.
+# Owner-authored pull requests use the Codex-managed publication review recorded
+# in the pull request; GitHub does not permit a separate self-approval.
 * @ofunk-nvidia
 
 # Security-sensitive control files remain explicitly owned even if later rules change.
@@ -7,3 +9,4 @@
 /AGENTS.md @ofunk-nvidia
 /PUBLICATION_POLICY.md @ofunk-nvidia
 /SECURITY.md @ofunk-nvidia
+
