@@ -16,7 +16,8 @@ if [[ -e "$site_dir" ]]; then rm -r -- "$site_dir"; fi
 mkdir -p "$source_dir/de" "$source_dir/docs"
 cp -- "$repo_root/README.md" "$source_dir/README.md"
 cp -- "$repo_root/PUBLICATION_POLICY.md" "$repo_root/OPEN_SOURCE_BASELINE.md" \
-  "$repo_root/CONTRIBUTING.md" "$repo_root/THIRD_PARTY_NOTICES.md" "$source_dir/"
+  "$repo_root/CONTRIBUTING.md" "$repo_root/THIRD_PARTY_NOTICES.md" \
+  "$repo_root/AGENTS.md" "$source_dir/"
 cp -R -- "$repo_root/docs/en" "$repo_root/docs/de" "$source_dir/docs/"
 cp -- "$repo_root/de/README.md" "$repo_root/de/PUBLICATION_POLICY.md" \
   "$repo_root/de/OPEN_SOURCE_BASELINE.md" "$repo_root/de/CONTRIBUTING.md" \
