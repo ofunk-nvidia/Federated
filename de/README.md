@@ -1,6 +1,6 @@
 # Föderierte Wissensarchitektur für Strategieberatung
 
-[Überblick](README.md) · [Architektur](../docs/de/architecture.md) · [Workflow](../docs/de/workflow.md) · [Toolchain](../docs/de/toolchain.md) · [Governance](../docs/de/governance.md) · [English](../README.md)
+[Überblick](README.md) · [Architektur](../docs/de/architecture.md) · [Deployment](../docs/de/deployment.md) · [Workflow](../docs/de/workflow.md) · [Toolchain](../docs/de/toolchain.md) · [Governance](../docs/de/governance.md) · [English](../README.md)
 
 > Unabhängige explorative Referenzarchitektur. Kein offizielles NVIDIA-Produkt, keine Rechtsberatung, keine Kundenimplementierung und keine Produktionsfreigabe.
 
@@ -67,9 +67,10 @@ flowchart TD
 ## Empfohlene Navigation
 
 1. [Architektur](../docs/de/architecture.md)
-2. [Workflow](../docs/de/workflow.md)
-3. [Toolchain](../docs/de/toolchain.md)
-4. [Governance](../docs/de/governance.md)
+2. [Deployment](../docs/de/deployment.md)
+3. [Workflow](../docs/de/workflow.md)
+4. [Toolchain](../docs/de/toolchain.md)
+5. [Governance](../docs/de/governance.md)
 
 ## Status
 

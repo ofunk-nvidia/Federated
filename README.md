@@ -1,6 +1,6 @@
 # Federated Consulting Knowledge Fabric
 
-[Overview](README.md) · [Architecture](docs/en/architecture.md) · [Workflow](docs/en/workflow.md) · [Toolchain](docs/en/toolchain.md) · [Governance](docs/en/governance.md) · [Deutsch](de/README.md)
+[Overview](README.md) · [Architecture](docs/en/architecture.md) · [Deployment](docs/en/deployment.md) · [Workflow](docs/en/workflow.md) · [Toolchain](docs/en/toolchain.md) · [Governance](docs/en/governance.md) · [Deutsch](de/README.md)
 
 > Independent exploratory reference architecture. This is not an official NVIDIA product, legal opinion, customer implementation, or production approval.
 
@@ -67,9 +67,10 @@ flowchart TD
 ## Recommended reading
 
 1. [Architecture](docs/en/architecture.md)
-2. [Workflow](docs/en/workflow.md)
-3. [Toolchain](docs/en/toolchain.md)
-4. [Governance](docs/en/governance.md)
+2. [Deployment](docs/en/deployment.md)
+3. [Workflow](docs/en/workflow.md)
+4. [Toolchain](docs/en/toolchain.md)
+5. [Governance](docs/en/governance.md)
 
 Operational instructions are kept outside this executive narrative in [AGENTS.md](AGENTS.md), [PUBLICATION_POLICY.md](PUBLICATION_POLICY.md), and [CONTRIBUTING.md](CONTRIBUTING.md).
 

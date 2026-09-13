@@ -1,6 +1,6 @@
 # Architecture
 
-[Overview](../../README.md) · [Architecture](architecture.md) · [Workflow](workflow.md) · [Toolchain](toolchain.md) · [Governance](governance.md) · [Deutsch](../de/architecture.md)
+[Overview](../../README.md) · [Architecture](architecture.md) · [Deployment](deployment.md) · [Workflow](workflow.md) · [Toolchain](toolchain.md) · [Governance](governance.md) · [Deutsch](../de/architecture.md)
 
 ## Design objective
 
@@ -29,9 +29,9 @@ flowchart TB
 | Federated adapter | explicitly reusable abstract capability | local training, protected aggregation | only through release path |
 | Released common adapter | approved shared capability | authorised sites | yes, after gate |
 
-## Physical deployment: cloud-separated engagement cells
+## Physical deployment: centrally hosted, separated engagement cells
 
-This use case assumes that the authorised source estate is already in Microsoft 365. Each engagement receives its own cloud runtime, workload identity, storage, keys, logs, and FLARE client. The central FLARE service coordinates jobs and aggregates approved updates; it receives neither SharePoint documents nor retrieval indexes.
+This use case assumes that the authorised source estate is centrally held in the strategy consultancy's Microsoft 365 tenant. Customers are not separate identity providers or FLARE sites. Each engagement receives its own isolated runtime, workload identity, storage, keys, logs, and FLARE client inside the consultancy-controlled cloud. The central FLARE service coordinates jobs and aggregates approved updates; it receives neither SharePoint documents nor retrieval indexes.
 
 ```mermaid
 flowchart TB

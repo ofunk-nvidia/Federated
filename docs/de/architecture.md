@@ -1,6 +1,6 @@
 # Architektur
 
-[Überblick](../../de/README.md) · [Architektur](architecture.md) · [Workflow](workflow.md) · [Toolchain](toolchain.md) · [Governance](governance.md) · [English](../en/architecture.md)
+[Überblick](../../de/README.md) · [Architektur](architecture.md) · [Deployment](deployment.md) · [Workflow](workflow.md) · [Toolchain](toolchain.md) · [Governance](governance.md) · [English](../en/architecture.md)
 
 ## Entwurfsziel
 
@@ -29,9 +29,9 @@ flowchart TB
 | Föderierter Adapter | ausdrücklich wiederverwendbare abstrakte Fähigkeit | lokales Training, geschützte Aggregation | nur über Release-Pfad |
 | Freigegebener gemeinsamer Adapter | geprüfte gemeinsame Fähigkeit | autorisierte Sites | ja, nach Gate |
 
-## Physische Bereitstellung: cloud-getrennte Mandatszellen
+## Physische Bereitstellung: zentral gehostete, getrennte Mandatszellen
 
-Dieser Use Case nimmt an, dass die autorisierte Quellenlandschaft bereits in Microsoft 365 liegt. Jedes Mandat erhält eine eigene Cloud-Runtime, Workload Identity, Speicher, Schlüssel, Logs und einen FLARE-Client. Der zentrale FLARE-Dienst koordiniert Jobs und aggregiert freigegebene Updates; er erhält weder SharePoint-Dokumente noch Retrieval-Indizes.
+Dieser Use Case nimmt an, dass die autorisierte Quellenlandschaft zentral im Microsoft-365-Tenant der Strategieberatung liegt. Kunden sind weder getrennte Identity Provider noch FLARE-Sites. Jedes Mandat erhält innerhalb der von der Beratung kontrollierten Cloud eine eigene isolierte Runtime, Workload Identity, Speicher, Schlüssel, Logs und einen FLARE-Client. Der zentrale FLARE-Dienst koordiniert Jobs und aggregiert freigegebene Updates; er erhält weder SharePoint-Dokumente noch Retrieval-Indizes.
 
 ```mermaid
 flowchart TB

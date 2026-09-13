@@ -49,6 +49,7 @@ nav:
   - English:
       - Overview: README.md
       - Architecture: docs/en/architecture.md
+      - Deployment: docs/en/deployment.md
       - Workflow: docs/en/workflow.md
       - Toolchain: docs/en/toolchain.md
       - Governance:
@@ -60,6 +61,7 @@ nav:
   - Deutsch:
       - Überblick: de/README.md
       - Architektur: docs/de/architecture.md
+      - Deployment: docs/de/deployment.md
       - Workflow: docs/de/workflow.md
       - Toolchain: docs/de/toolchain.md
       - Governance:
