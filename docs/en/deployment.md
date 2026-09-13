@@ -152,4 +152,3 @@ For every round retain: architecture version, data-purpose approval, resource as
 8. Produce a risk-acceptance dossier before any real engagement pilot.
 
 Acceptance requires zero cross-site reads, no raw or derived private content at the hub, no direct site routes, reproducible signed releases, successful revocation and recovery, and documented residual privacy leakage. Legal and contractual permission remains a separate gate.
-
