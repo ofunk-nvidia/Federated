@@ -78,4 +78,3 @@ flowchart TD
 ## Selection principle
 
 The stack is modular. NVIDIA FLARE does not decide data rights or replace the local trainer. NeMo tools do not replace engagement access control, independent legal review, or leakage testing. Every component must earn its place through a measured POC.
-
