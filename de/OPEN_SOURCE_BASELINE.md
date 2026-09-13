@@ -20,4 +20,3 @@ Dieses Register legt fest, welche Werkzeuge als Teil des Open-Source-Referenzsta
 Open-Weight-Modelle benötigen eine getrennte Modelllizenzentscheidung. Öffentlicher GitHub-Code, öffentliche Dokumentation und herunterladbare Gewichte sind nicht automatisch Open Source oder zulässige Trainingsdaten.
 
 Dieses Repository verlinkt Werkzeuge; es übernimmt und führt sie nicht aus. Jede Implementierung gehört in ein getrenntes freigegebenes Repository.
-
