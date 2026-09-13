@@ -67,19 +67,21 @@ Jeder Pull Request muss alle Bedingungen erfüllen:
 
 1. Der Contributor hat die Veröffentlichungscheckliste ausgefüllt.
 2. Der automatische Scan findet keine bekannten Secrets oder gesperrten Dateitypen.
-3. Ein Mensch prüft Provenienz, Lizenzkompatibilität, Vertraulichkeit und personenbezogene Daten.
+3. Das anwendbare Veröffentlichungsreview ist im Pull Request dokumentiert: Owner-eigene Änderungen erhalten ein vom Repository-Inhaber autorisiertes Codex-Review, externe Beiträge ein Review durch den Repository-Inhaber.
 4. Externe Inhalte sind in `THIRD_PARTY_NOTICES.md` dokumentiert.
 5. Synthetische Inhalte sind gekennzeichnet und enthalten keine realen Identifikatoren.
 6. Visuals besitzen Quellen- und Lizenzangaben oder wurden für das Projekt neu erstellt.
 7. Generierte Inhalte dokumentieren relevante Inputs und Reviewstatus.
-8. Ein Reviewer bestätigt, dass keine offizielle Unterstützung durch NVIDIA oder einen Kunden suggeriert wird.
-9. Ein Reviewer bestätigt, dass die Änderung dokumentationsbezogen bleibt und kein POC- oder Kundenprojekt-Artefakt enthält.
+8. Das dokumentierte Review bestätigt, dass keine offizielle Unterstützung durch NVIDIA oder einen Kunden suggeriert wird.
+9. Das dokumentierte Review bestätigt, dass die Änderung dokumentationsbezogen bleibt und kein POC- oder Kundenprojekt-Artefakt enthält.
 
-Automatische Scans sind nur eine Mindestkontrolle. Ihr Bestehen beweist nicht, dass eine Veröffentlichung sicher oder rechtlich zulässig ist.
+Bei einer in Codex initiierten Owner-eigenen Änderung autorisiert die Anweisung des Repository-Inhabers Codex dazu, den vollständigen Diff zu prüfen, Checkliste und Primärquellenbelege zu verifizieren, das Ergebnis im Pull Request zu dokumentieren, die erforderlichen Checks abzuwarten und über den authentifizierten GitHub-Connector `ofunk-nvidia` zu mergen. Eine separate GitHub-Selbstfreigabe ist weder möglich noch erforderlich. Externe Beiträge benötigen weiterhin die ausdrückliche CODEOWNER-Freigabe durch `ofunk-nvidia`. Rechtliche, sicherheits-, datenschutz- oder lizenzbezogene Unsicherheit bleibt eine Stoppbedingung und benötigt eine Entscheidung durch eine entsprechend qualifizierte Person.
+
+Automatische Scans und das Codex-Review sind Mindestkontrollen. Ihr Bestehen allein beweist nicht, dass eine Veröffentlichung sicher oder rechtlich zulässig ist.
 
 ## Externe Beiträge
 
-Öffentliche Sichtbarkeit erlaubt Lesen, Forken und das Vorschlagen von Änderungen; sie erteilt keine Schreib- oder Merge-Berechtigung. Externe Beiträge gelangen ausschließlich über Pull Requests aus Forks hinein. Der Repository-Inhaber prüft jede Änderung als CODEOWNER. Das Default-Branch-Ruleset muss direkte Pushes, Force Pushes, Löschung und nicht geprüfte Merges verhindern. Ein Contributor wird nicht als Collaborator hinzugefügt, nur um diesen Ablauf zu umgehen.
+Öffentliche Sichtbarkeit erlaubt Lesen, Forken und das Vorschlagen von Änderungen; sie erteilt keine Schreib- oder Merge-Berechtigung. Externe Beiträge gelangen ausschließlich über Pull Requests aus Forks hinein und benötigen die Freigabe des Repository-Inhabers als CODEOWNER. Owner-eigene Änderungen folgen dem oben beschriebenen Codex-gesteuerten Veröffentlichungsworkflow; die CODEOWNERS-Zuordnung kennzeichnet die Verantwortung, erzeugt aber keine technisch unmögliche Selbstfreigabe. Das Default-Branch-Ruleset muss Pull Requests und Publication Checks verlangen sowie direkte Pushes, Force Pushes und Löschung verhindern. Ein Contributor wird nicht als Collaborator hinzugefügt, nur um diesen Ablauf zu umgehen.
 
 ## Reaktion auf einen Vorfall
 
@@ -95,3 +97,4 @@ Falls gesperrter Inhalt in die Git-Historie gelangt:
 ## Überprüfung
 
 Diese Policy wird bei jeder neuen Datenquelle, jedem Modell, jeder Lizenz, externen Action, Veröffentlichungsform oder kundenbezogenen Nutzung überprüft.
+

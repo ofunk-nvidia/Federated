@@ -4,7 +4,7 @@
 
 ## Entwurfsziel
 
-Jede Mandatsgrenze bleibt erhalten, während ausschließlich eine separat freigegebene gemeinsame Fähigkeit entsteht. SharePoint, Entra ID und Purview bleiben für Dokumentenzugriffe maßgeblich. NVIDIA FLARE steuert, welche lokalen Lernupdates in die Aggregation gelangen dürfen.
+Jede Mandatsgrenze bleibt erhalten, während ausschließlich eine separat freigegebene gemeinsame Fähigkeit entsteht. [SharePoint](https://learn.microsoft.com/en-us/sharepoint/introduction), [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/fundamentals/what-is-entra) und [Microsoft Purview Information Barriers](https://learn.microsoft.com/en-us/purview/information-barriers-sharepoint) bleiben für Dokumentenzugriffe maßgeblich. [NVIDIA FLARE](https://nvflare.readthedocs.io/en/main/) steuert, welche lokalen Lernupdates in die Aggregation gelangen dürfen. Rollen, Grenzen und weitere offizielle Dokumentation stehen in der [Produkt- und Dienstreferenz](toolchain.md#produkt-und-dienstreferenz).
 
 ```mermaid
 flowchart TB
