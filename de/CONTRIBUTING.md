@@ -15,10 +15,11 @@ Vor einem Pull Request:
 7. Offenlegen, ob KI den Beitrag erzeugt hat und welche Inputs verwendet wurden.
 8. Einen kleinen Pull Request mit einem klaren Zweck einreichen.
 9. Nach Änderungen an Präsentationskonfiguration oder Navigation `requirements-pages.txt` installieren, `bash scripts/build_pages.sh` ausführen und beide Sprachpfade prüfen.
-10. Publication Check und CODEOWNER-Freigabe abwarten und niemals um Umgehung des Default-Branch-Rulesets bitten.
+10. Publication Check und das anwendbare Review abwarten: Externe Beiträge benötigen die CODEOWNER-Freigabe durch `ofunk-nvidia`; Owner-eigene Änderungen benötigen ein im Pull Request dokumentiertes Codex-Veröffentlichungsreview. Niemals um Umgehung des Default-Branch-Rulesets bitten.
 
-Mit dem Beitrag wird bestätigt, dass die erforderlichen Rechte für eine Veröffentlichung unter der Repository-Lizenz vorliegen. Ein bestandener automatischer Scan ersetzt kein menschliches Review.
+Bei einer in Codex initiierten Owner-eigenen Änderung autorisiert die Anweisung des Inhabers Codex dazu, das Review abzuschließen, die Belege im Pull Request zu dokumentieren, nach erfolgreichen Checks über den authentifizierten Connector `ofunk-nvidia` zu mergen und `main` sowie Pages zu verifizieren. Eine GitHub-Selbstfreigabe ist nicht erforderlich. Mit dem Beitrag wird bestätigt, dass die erforderlichen Rechte für eine Veröffentlichung unter der Repository-Lizenz vorliegen. Automatisierung oder Codex-Review klären keine erkannte rechtliche, sicherheits-, datenschutz- oder lizenzbezogene Unsicherheit; dafür ist eine Entscheidung durch eine entsprechend qualifizierte Person erforderlich.
 
 ## Synchronität von Repository und Pages
 
 Das versionierte Markdown ist die einzige Source of Truth. GitHub Pages wird durch `.github/workflows/pages.yml` aus demselben Commit erzeugt; generierte Verzeichnisse werden weder bearbeitet noch committed. Ein fehlgeschlagener Pages-Build oder ein fehlgeschlagenes Deployment ist ein Veröffentlichungsfehler und muss behoben werden, bevor die öffentliche Site als aktuell gilt.
+
