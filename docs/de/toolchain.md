@@ -78,4 +78,3 @@ flowchart TD
 ## Auswahlprinzip
 
 Der Stack ist modular. NVIDIA FLARE entscheidet nicht über Datenrechte und ersetzt nicht den lokalen Trainer. NeMo-Werkzeuge ersetzen weder Mandatsberechtigungen noch unabhängige rechtliche Prüfung oder Leakage-Tests. Jede Komponente muss ihren Nutzen in einem messbaren POC belegen.
-
