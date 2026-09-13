@@ -40,7 +40,7 @@ flowchart LR
 
 > A consultant may use knowledge within an authorised engagement. The consultancy may not automatically reuse that knowledge across engagements.
 
-Federated learning is therefore an enforcement and coordination mechanism, not a legal shortcut. NVIDIA FLARE is evaluated as the orchestration layer; local training, evaluation, privacy engineering, and release governance remain distinct responsibilities.
+Federated learning is therefore an enforcement and coordination mechanism, not a legal shortcut. [NVIDIA FLARE](https://nvflare.readthedocs.io/en/main/) is evaluated as the orchestration layer; local training, evaluation, privacy engineering, and release governance remain distinct responsibilities. The [toolchain reference](docs/en/toolchain.md#product-and-service-reference) explains the named platform and tool components and links to their official documentation.
 
 ## What this repository contains
 
@@ -77,3 +77,4 @@ Operational instructions are kept outside this executive narrative in [AGENTS.md
 ## Current status
 
 Concept ready for executive and technical discussion. No claim of legal safety or production readiness is made. The next implementation step, if approved, is a synthetic three-site POC in a separate private repository.
+
