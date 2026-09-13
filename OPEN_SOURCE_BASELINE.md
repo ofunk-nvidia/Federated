@@ -20,4 +20,3 @@ This register governs which tools may be presented as part of the open-source re
 Open-weight models require a separate model-licence decision. Public GitHub code, public documentation, and downloadable weights are not automatically open source or permissible training data.
 
 This repository links to tools; it does not vendor or execute them. Any implementation belongs in a separate approved repository.
-
