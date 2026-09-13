@@ -284,6 +284,225 @@ A mechanism appearing in NVFLARE documentation or example code does not establis
 
 ---
 
+## 7.5 Recommended NVIDIA fine-tuning and post-training toolkit
+
+### Recommendation for the first POC
+
+Use this minimal stack:
+
+```text
+Local approved engagement data
+    ↓
+NeMo Curator + engagement-specific policy filters
+    ↓
+NeMo AutoModel + LoRA/PEFT
+    ↓
+NVFLARE for federated training rounds
+    ↓
+NeMo Evaluator + consulting-specific evaluation gates
+    ↓
+local inference; optimise serving only after the POC succeeds
+```
+
+The key design decision is:
+
+> **NeMo AutoModel with LoRA/PEFT is the local fine-tuning layer. NVFLARE orchestrates federation but does not replace the local training framework.**
+
+Responsibilities remain separate:
+
+- NeMo Curator prepares and checks local training data.
+- NeMo AutoModel performs local SFT or PEFT.
+- NVFLARE distributes approved jobs and aggregates compatible adapter updates.
+- NeMo Evaluator provides a reproducible evaluation framework.
+- Project-specific privacy, factuality, consulting-quality, and competition-law tests remain mandatory release gates.
+
+### A. NeMo AutoModel — preferred for SFT and PEFT
+
+[NVIDIA NeMo AutoModel](https://docs.nvidia.com/nemo/automodel/latest/) is the preferred local training framework for the POC. Its current documentation covers Hugging Face compatibility, local and distributed execution, SFT, PEFT, retrieval fine-tuning, and knowledge distillation.
+
+The default configuration is:
+
+```yaml
+training_method: LoRA
+base_model: frozen
+full_parameter_training: false
+private_adapter: per_engagement
+federated_adapter: separate
+```
+
+Full-parameter SFT is not recommended for the first POC. It increases compute demand, artefact size, memorisation risk, rollback complexity, and the scope of legal review. QLoRA may be benchmarked where hardware is constrained, but every federating site must use a demonstrably compatible model, quantisation method, adapter layout, target-layer set, and training contract.
+
+### B. NeMo Curator — local data preparation
+
+[NeMo Curator](https://docs.nvidia.com/nemo/curator/latest/) is recommended for local quality filtering, exact/fuzzy/semantic deduplication, decontamination, classification, PII handling, and synthetic-data workflows.
+
+It must be extended with engagement-specific controls:
+
+- provenance and rights metadata;
+- document and data-class policy;
+- customer, person, price, bid, capacity, and strategy detection;
+- secret and identifier scanning;
+- evaluation-set decontamination;
+- separation of private examples from federatable class A/B examples;
+- rejection of examples with uncertain rights or purpose.
+
+NeMo Curator runs inside the engagement boundary. Raw engagement corpora must not be sent to a shared curation cluster.
+
+### C. NVFLARE — federation and enforcement
+
+[NVIDIA FLARE](https://nvidia.github.io/NVFlare/) remains the federation layer:
+
+```text
+NVFLARE job
+    ↓
+local site policy
+    ↓
+NeMo-AutoModel LoRA training
+    ↓
+parameter allowlist + clipping + privacy controls
+    ↓
+protected adapter update
+    ↓
+NVFLARE cohort aggregation
+```
+
+Each site retains the authority to reject a job. NVFLARE must not centrally decide whether a document is legally or contractually reusable. It may receive only the approved adapter payload and content-minimised audit metadata.
+
+### D. NeMo Evaluator — evaluation framework, not the sole release authority
+
+[NVIDIA NeMo Evaluator](https://docs.nvidia.com/nemo/evaluator/) is recommended for reproducible benchmark execution. Generic LLM benchmarks are insufficient for this use case.
+
+A release decision must combine:
+
+1. task quality on an engagement-independent holdout set;
+2. local quality for every participating site;
+3. factuality and source-grounding tests;
+4. canary, memorisation, membership-inference, and semantic-leakage tests;
+5. prohibited competition-sensitive question tests;
+6. customer-identity and attribution probes;
+7. human review by consulting-domain specialists;
+8. regression against the previously released adapter.
+
+An adapter must be blocked if a generic score improves while cross-engagement leakage, unsupported claims, or prohibited capabilities increase.
+
+### E. NeMo RL — later, after reliable feedback exists
+
+[NVIDIA NeMo RL](https://docs.nvidia.com/nemo/rl/latest/) is the preferred later-stage toolkit for preference optimisation and reinforcement-learning post-training. It is deliberately excluded from the initial POC baseline.
+
+Recommended order:
+
+```text
+1. RAG and tools without training
+2. LoRA-SFT on curated, approved examples
+3. preference learning from controlled expert reviews
+4. RL only after a robust reward and anti-gaming tests exist
+```
+
+Potential consulting-domain reward signals include:
+
+- correct source attribution;
+- explicit separation of evidence and inference;
+- adherence to an approved analysis method;
+- correct handling of uncertainty;
+- human preference between two anonymised responses;
+- refusal to expose client-specific or competition-sensitive information;
+- passing structured factuality and policy tests.
+
+These signals are weaker and more subjective than a compiler or executable test suite. Therefore RL carries a higher risk of reward hacking and stylistic optimisation without factual improvement. Start with high-quality preference pairs and evaluate a direct preference method before considering more complex online RL.
+
+Prompts, reviewer comments, trajectories, rewards, and rollouts may themselves contain confidential engagement information. They inherit the source data classification and are not automatically federatable.
+
+### F. NeMo Framework and Megatron Core — scale-up option
+
+Use the broader [NVIDIA NeMo Framework](https://docs.nvidia.com/nemo-framework/) or Megatron Core only if the project later requires very large models, multi-node execution, full-parameter training, or advanced parallelism that NeMo AutoModel cannot provide adequately.
+
+This is not the POC default. Escalate only when a measured limitation justifies the additional infrastructure and governance burden.
+
+### G. NeMo Microservices — possible productisation layer
+
+NeMo Microservices may later provide API-based enterprise customisation and evaluation workflows. Do not make them the foundation of the first local POC. First validate the training contract, isolation model, policy enforcement, privacy controls, and evidence pipeline directly.
+
+Adoption requires verification that the service can run within the permitted environment, preserves engagement isolation, exposes sufficient policy controls, and does not create a new central path for confidential training data.
+
+### H. TensorRT-LLM or NIM — inference optimisation only
+
+[TensorRT-LLM](https://docs.nvidia.com/tensorrt-llm/) or a suitable NVIDIA NIM may later optimise inference latency, throughput, and deployment. They do not solve training rights, data classification, federation, or leakage. Add them only after model quality and privacy gates succeed.
+
+### Decision matrix
+
+| NVIDIA component | Role | POC | Later |
+|---|---|---:|---:|
+| NeMo Curator | local curation, deduplication, decontamination | yes, targeted | yes |
+| NeMo AutoModel | local SFT/PEFT/LoRA | **yes, core** | yes |
+| NVFLARE | federated orchestration and aggregation | yes, after local baseline | yes |
+| NeMo Evaluator | reproducible evaluation | yes | yes |
+| NeMo RL | preference/RL post-training | no; prepare data model only | optional |
+| NeMo Framework/Megatron Core | large-scale or full-parameter training | no | if measured need exists |
+| NeMo Microservices | managed productisation layer | no | optional after governance review |
+| TensorRT-LLM/NIM | inference optimisation and serving | no | after model validation |
+
+### Minimal technology contract
+
+```yaml
+data_preparation:
+  framework: NeMo Curator
+  location: engagement_environment
+  default_policy: deny
+
+fine_tuning:
+  framework: NeMo AutoModel
+  method: LoRA
+  base_model: frozen
+  adapters:
+    - private_engagement_adapter
+    - separate_federated_adapter
+
+federation:
+  framework: NVFLARE
+  payload: allowlisted_lora_parameters_only
+  minimum_cohort: configurable
+  plaintext_individual_updates: prohibited_target
+
+post_training:
+  phase_1: supervised_fine_tuning
+  phase_2: preference_learning_optional
+  phase_3: reinforcement_learning_only_with_validated_reward
+
+evaluation:
+  framework: NeMo Evaluator
+  mandatory_custom_gates:
+    - factuality
+    - source_grounding
+    - cross_engagement_leakage
+    - competition_sensitive_queries
+    - human_domain_review
+
+inference:
+  poc: simple_local_runtime
+  production_candidates:
+    - TensorRT-LLM
+    - NVIDIA NIM
+```
+
+### Base-model decision
+
+Select the NVIDIA training stack before fixing a specific base model. Benchmark two or three locally deployable candidates against the project’s actual tasks.
+
+Mandatory criteria:
+
+- licence permits the intended commercial use and fine-tuning;
+- weights can be operated inside each engagement boundary;
+- NeMo AutoModel or a clean compatible trainer supports the model;
+- context length fits approved task units;
+- structured output and tool use are sufficiently reliable;
+- compute demand matches site hardware;
+- adapters can be deterministically stored, loaded, compared, evaluated, and aggregated;
+- privacy and memorisation behaviour is acceptable under the project tests.
+
+Do not select a model solely from a public general-purpose benchmark. The project benchmark must measure evidence-grounded consulting tasks, privacy behaviour, policy compliance, and cross-engagement safety.
+
+---
+
 ## 8. Federated training workflow
 
 Every permitted training round follows this minimum sequence:
@@ -738,6 +957,12 @@ Before implementation, verify current versions, behaviour, and licences using of
 - NVIDIA FLARE documentation: <https://nvidia.github.io/NVFlare/>
 - NVIDIA FLARE security: <https://nvidia.github.io/NVFlare/security/>
 - NVIDIA FLARE repository and examples: <https://github.com/NVIDIA/NVFlare>
+- NVIDIA NeMo AutoModel: <https://docs.nvidia.com/nemo/automodel/latest/>
+- NVIDIA NeMo Curator: <https://docs.nvidia.com/nemo/curator/latest/>
+- NVIDIA NeMo Evaluator: <https://docs.nvidia.com/nemo/evaluator/>
+- NVIDIA NeMo RL: <https://docs.nvidia.com/nemo/rl/latest/>
+- NVIDIA NeMo Framework: <https://docs.nvidia.com/nemo-framework/>
+- NVIDIA TensorRT-LLM: <https://docs.nvidia.com/tensorrt-llm/>
 - Microsoft Graph permissions reference: <https://learn.microsoft.com/graph/permissions-reference>
 - SharePoint Information Barriers: <https://learn.microsoft.com/purview/information-barriers-sharepoint>
 - European Commission Horizontal Guidelines: <https://competition-policy.ec.europa.eu/antitrust-and-cartels/legislation/horizontal-guidelines_en>
@@ -768,4 +993,3 @@ The governing principle is:
 > A strategy consultant may use knowledge within an engagement. That does not automatically entitle the consultancy to reuse that knowledge across engagements through a shared model.
 
 NVIDIA FLARE is the candidate orchestration and enforcement layer for federated learning. SharePoint, Entra ID, and Purview remain the access-control layer. The project-specific policy and classification layer between them is the central product capability.
-
