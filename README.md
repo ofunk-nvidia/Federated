@@ -4,7 +4,7 @@
 
 **Version:** 0.2  
 **Date:** 13 September 2026  
-**Status:** Concept and proof-of-concept specification; not approved for production data  
+**Status:** Public reference architecture; documentation only; no customer-project execution  
 **Scenario:** A strategy consultancy with 20 isolated client engagements using Microsoft SharePoint, Entra ID, Purview Information Barriers, and NVIDIA FLARE
 
 > **Independent exploratory project.** This repository does not describe an official NVIDIA product, commitment, reference architecture, legal opinion, or customer implementation. It contains no approved path for publishing confidential, client, employer, or third-party material.
