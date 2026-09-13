@@ -103,4 +103,3 @@ Die Architektur nimmt an, dass Client, Job, Aggregator, Administrator oder Model
 ## Offene Architekturentscheidung
 
 Die zentrale Frage ist nicht, ob Federation technisch möglich ist. Entscheidend ist, welches Lernobjekt abstrakt, autorisiert, nützlich und leakage-resistent genug ist, um eine Mandatsgrenze zu überschreiten.
-
