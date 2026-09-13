@@ -25,6 +25,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: requirements-pages.txt
       - name: Run publication gate
         run: python scripts/check_public_content.py
       - name: Install Pages dependencies
