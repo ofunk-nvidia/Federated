@@ -4,7 +4,18 @@ These instructions apply to the entire repository. They are deliberately kept ou
 
 ## Language
 
-All agent output must be in English, even when the user writes in German. This includes plans, questions, explanations, documentation, comments, reports, commit messages, issues, and pull requests. Preserve original-language quotations only when necessary and explain them in English.
+User input may be in any language. English is the leading and canonical output language for both repositories. Normal agent responses, plans, reports, commit messages, issues, and pull requests use English unless the user explicitly asks for another language in the conversation.
+
+Public presentation content follows two controlled, monolingual paths:
+
+- English: `README.md` and `docs/en/`
+- German: `de/README.md` and `docs/de/`
+
+Every material presentation change updates both language paths in the same commit. The two paths use the same information architecture, navigation order, diagrams, decisions, and semantic content. Do not create bilingual body text. A compact language-switch link is permitted. English resolves ambiguity and is updated first; German is a faithful branch, not an independent concept.
+
+Top-level governance files are canonical English. German reader-facing translations live under `de/`. Machine-facing configuration and code remain language-neutral where practical.
+
+The `Federated` and `FederatedCoding` repositories may share structure and governance while that saves work. They are allowed to diverge when their partner-specific concepts require it; cross-repository synchronisation is not a permanent requirement. Language-path synchronisation inside each repository remains required.
 
 ## Repository purpose
 
@@ -19,6 +30,7 @@ Before changing the repository, read:
 3. `OPEN_SOURCE_BASELINE.md`
 4. `CONTRIBUTING.md`
 5. `THIRD_PARTY_NOTICES.md`
+6. the corresponding English and German presentation pages affected by the change
 
 ## Operating rules
 
@@ -32,6 +44,7 @@ Before changing the repository, read:
 - Do not claim that federated learning or open source eliminates copyright, competition, confidentiality, privacy, trade-secret, contractual, or security risk.
 - Keep GitHub as the single source of truth and use GitHub-renderable Markdown, Mermaid, SVG, or reviewed raster visuals. Do not introduce PDF or PowerPoint deliverables.
 - Keep changes small, reviewable, and reversible. Preserve an executive-readable narrative in `README.md`; put agent mechanics and contribution controls in their dedicated files.
+- Keep the English and German presentation navigation structurally identical and verify every relative link.
 - Record incorporated external excerpts or assets in `THIRD_PARTY_NOTICES.md` before merge.
 - Run `python scripts/check_public_content.py` after every change. A passing scan never replaces human provenance, licence, confidentiality, privacy, and trademark review.
 
@@ -59,4 +72,3 @@ For a documentation update:
 For a separate POC proposal:
 
 > Draft a self-contained plan for a new private POC repository using synthetic data only. Include approvals, licences, isolation tests, leakage tests, exit criteria, and repository boundaries. Do not create implementation files or execute training in this public reference repository.
-
