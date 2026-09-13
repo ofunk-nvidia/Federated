@@ -152,4 +152,3 @@ Je Runde werden aufbewahrt: Architekturversion, Data-Purpose-Freigabe, Ressource
 8. Vor einem echten Mandatspiloten ein Risk-Acceptance-Dossier erstellen.
 
 Die Abnahme verlangt null Cross-Site-Lesezugriffe, keine rohen oder abgeleiteten privaten Inhalte im Hub, keine direkten Site-Routen, reproduzierbare signierte Releases, erfolgreichen Widerruf und Recovery sowie dokumentiertes verbleibendes Privacy Leakage. Rechtliche und vertragliche Erlaubnis bleibt ein getrenntes Gate.
-
