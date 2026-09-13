@@ -12,6 +12,7 @@ SELF = Path(__file__).resolve()
 MAX_TEXT_BYTES = 2 * 1024 * 1024
 MAX_IMAGE_BYTES = 5 * 1024 * 1024
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp"}
+IGNORED_PARTS = {".git", ".pages-site", ".pages-src"}
 PROHIBITED_SUFFIXES = {
     ".7z", ".bin", ".ckpt", ".db", ".dmp", ".dump", ".env", ".fmb",
     ".gz", ".jks", ".keystore", ".onnx", ".p12", ".parquet", ".pem",
@@ -70,7 +71,7 @@ def main() -> int:
     failures: list[str] = []
     check_language_paths(failures)
     for path in sorted(p for p in ROOT.rglob("*") if p.is_file()):
-        if ".git" in path.parts:
+        if IGNORED_PARTS.intersection(path.parts):
             continue
         rel = path.relative_to(ROOT)
         lowered_parts = {part.lower() for part in rel.parts}

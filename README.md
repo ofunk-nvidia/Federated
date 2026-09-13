@@ -4,6 +4,8 @@
 
 > Independent exploratory reference architecture. This is not an official NVIDIA product, legal opinion, customer implementation, or production approval.
 
+**Presentation site:** [ofunk-nvidia.github.io/Federated](https://ofunk-nvidia.github.io/Federated/)
+
 ## The executive idea
 
 A strategy consultancy works across many confidential client engagements. Each engagement may contain valuable methods and experience, but contractual information barriers prevent client knowledge from becoming a shared corporate memory.

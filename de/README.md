@@ -4,6 +4,8 @@
 
 > Unabhängige explorative Referenzarchitektur. Kein offizielles NVIDIA-Produkt, keine Rechtsberatung, keine Kundenimplementierung und keine Produktionsfreigabe.
 
+**Präsentations-Site:** [ofunk-nvidia.github.io/Federated](https://ofunk-nvidia.github.io/Federated/)
+
 ## Die Idee für Executives
 
 Eine Strategieberatung arbeitet gleichzeitig in zahlreichen vertraulichen Kundenmandaten. Jedes Mandat enthält wertvolle Methoden und Erfahrungen. Vertragliche Informationsbarrieren verhindern jedoch, dass Kundenwissen automatisch zu einem gemeinsamen Unternehmensgedächtnis wird.

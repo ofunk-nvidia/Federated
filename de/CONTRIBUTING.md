@@ -12,6 +12,10 @@ Vor einem Pull Request:
 6. Bestätigen, dass keine Datensätze, Modellartefakte, POC-Implementierung, Produktivkonfiguration oder Kundenprojektinhalte enthalten sind.
 7. Offenlegen, ob KI den Beitrag erzeugt hat und welche Inputs verwendet wurden.
 8. Einen kleinen Pull Request mit einem klaren Zweck einreichen.
+9. Nach Änderungen an Präsentationskonfiguration oder Navigation `requirements-pages.txt` installieren, `bash scripts/build_pages.sh` ausführen und beide Sprachpfade prüfen.
 
 Mit dem Beitrag wird bestätigt, dass die erforderlichen Rechte für eine Veröffentlichung unter der Repository-Lizenz vorliegen. Ein bestandener automatischer Scan ersetzt kein menschliches Review.
 
+## Synchronität von Repository und Pages
+
+Das versionierte Markdown ist die einzige Source of Truth. GitHub Pages wird durch `.github/workflows/pages.yml` aus demselben Commit erzeugt; generierte Verzeichnisse werden weder bearbeitet noch committed. Ein fehlgeschlagener Pages-Build oder ein fehlgeschlagenes Deployment ist ein Veröffentlichungsfehler und muss behoben werden, bevor die öffentliche Site als aktuell gilt.

@@ -1,0 +1,70 @@
+site_name: Federated Consulting Knowledge Fabric
+site_description: Reference architecture for federated consulting knowledge under engagement boundaries
+site_url: https://ofunk-nvidia.github.io/Federated/
+repo_url: https://github.com/ofunk-nvidia/Federated
+repo_name: ofunk-nvidia/Federated
+docs_dir: .pages-src
+site_dir: .pages-site
+
+theme:
+  name: material
+  language: en
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: green
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: green
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+
+plugins:
+  - search:
+      lang:
+        - en
+        - de
+
+markdown_extensions:
+  - tables
+  - attr_list
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+nav:
+  - English:
+      - Overview: README.md
+      - Architecture: docs/en/architecture.md
+      - Workflow: docs/en/workflow.md
+      - Toolchain: docs/en/toolchain.md
+      - Governance:
+          - Overview: docs/en/governance.md
+          - Publication policy: PUBLICATION_POLICY.md
+          - Open-source baseline: OPEN_SOURCE_BASELINE.md
+          - Contributing: CONTRIBUTING.md
+          - Third-party notices: THIRD_PARTY_NOTICES.md
+  - Deutsch:
+      - Überblick: de/README.md
+      - Architektur: docs/de/architecture.md
+      - Workflow: docs/de/workflow.md
+      - Toolchain: docs/de/toolchain.md
+      - Governance:
+          - Überblick: docs/de/governance.md
+          - Veröffentlichungs-Policy: de/PUBLICATION_POLICY.md
+          - Open-Source-Baseline: de/OPEN_SOURCE_BASELINE.md
+          - Mitwirken: de/CONTRIBUTING.md
+          - Drittanbieterhinweise: de/THIRD_PARTY_NOTICES.md
