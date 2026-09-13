@@ -78,4 +78,3 @@ For a documentation update:
 For a separate POC proposal:
 
 > Draft a self-contained plan for a new private POC repository using synthetic data only. Include approvals, licences, isolation tests, leakage tests, exit criteria, and repository boundaries. Do not create implementation files or execute training in this public reference repository.
-
