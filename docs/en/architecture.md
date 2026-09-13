@@ -4,7 +4,7 @@
 
 ## Design objective
 
-Preserve every engagement boundary while creating only a separately approved shared capability. SharePoint, Entra ID, and Purview remain the authority for document access. NVIDIA FLARE governs which local learning updates may enter aggregation.
+Preserve every engagement boundary while creating only a separately approved shared capability. [SharePoint](https://learn.microsoft.com/en-us/sharepoint/introduction), [Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/fundamentals/what-is-entra), and [Microsoft Purview Information Barriers](https://learn.microsoft.com/en-us/purview/information-barriers-sharepoint) remain the authority for document access. [NVIDIA FLARE](https://nvflare.readthedocs.io/en/main/) governs which local learning updates may enter aggregation. See the [product and service reference](toolchain.md#product-and-service-reference) for roles, boundaries, and further official documentation.
 
 ```mermaid
 flowchart TB
@@ -103,3 +103,4 @@ The design assumes that a client, job, aggregator, administrator, or model can f
 ## Architecture decision still required
 
 The central question is not whether federation is technically possible. It is which learning object is sufficiently abstract, authorised, useful, and leakage-resistant to cross an engagement boundary.
+
