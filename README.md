@@ -77,4 +77,3 @@ Operational instructions are kept outside this executive narrative in [AGENTS.md
 ## Current status
 
 Concept ready for executive and technical discussion. No claim of legal safety or production readiness is made. The next implementation step, if approved, is a synthetic three-site POC in a separate private repository.
-
